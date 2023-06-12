@@ -65,7 +65,7 @@ pipeline {
                     steps{
                     script {
                             sh "printenv"
-                             }
+                            echo "cool"
                             sh "ls -ltra"
 
                             sh "apt-get update"
@@ -73,9 +73,10 @@ pipeline {
                             sh "python3 setup.py bdist_wheel"
                         echo "Upload artifactory"
                         upoladToArtifactory()
+                             }
+                            
                         }
                     }
-                }
                 stage('Pushing New Tags') {
                     when { 
                      branch 'master'
@@ -102,4 +103,3 @@ pipeline {
         }
     }
 }
-
